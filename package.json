@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://emanuelarevalomartinez/hermosas-ciudade-cubanas-2-react-frontend",
+  "homepage": "https://emanuelarevalomartinez.github.io/hermosas-ciudade-cubanas-2-react-frontend",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
