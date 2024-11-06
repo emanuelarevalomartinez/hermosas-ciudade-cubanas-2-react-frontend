@@ -1,18 +1,14 @@
-import image from '../public/cuba/banderas/wp8347532-flag-cuba-wallpapers.jpg'
+import { NavBar } from "./NavBar"
+import { AppRoutes } from "./routes"
+
 
 function App() {
 
   return (
-    <>
-     <div className="flex min-h-screen w-screen bg-[#3572EF] text-[#A7E6FF]">
-     <p>hola</p>
-     <div>
-      <img 
-      className='h-40'
-      src={image} alt="It is no t possible to view the image" />
+    <div className="flex-col min-h-screen w-screen bg-[#DDF2FD]">
+       <NavBar/>
+     <AppRoutes/>
      </div>
-     </div>
-    </>
   )
 }
 
