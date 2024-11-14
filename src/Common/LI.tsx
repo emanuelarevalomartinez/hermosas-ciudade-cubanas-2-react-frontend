@@ -9,7 +9,7 @@ interface Props{
 export function LI({title,redirection}:Props){
     return (
         <>
-        <li className="flex m-1"><Link to={redirection}> {title} </Link></li>
+        <li className="flex m-1 justify-center"><Link to={redirection}> {title} </Link></li>
         </>
     )
 }
