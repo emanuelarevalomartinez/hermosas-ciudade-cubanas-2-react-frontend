@@ -1,10 +1,11 @@
 
 
-export function CubanCities(){
+
+export function CubanMap(){
 
 return(
     <div className="pt-16 sm:pt-28">
-        Ciudades cubanas
+        <p>Mapa nacional</p>
     </div>
 )
 
