@@ -7,23 +7,34 @@ import { FcMenu } from "react-icons/fc";
 import { Context, LI } from "../Common";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { navBarLanguage } from "./language";
 
 export function NavBar() {
   const navigate = useNavigate();
 
-  const { lightTheme, setLightTheme } = useContext(Context);
+  const { lightTheme, languageEs, setLanguageEs, handleChangeLightStatus } = useContext(Context);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isLight, setIsLight] = useState(true);
+  const [activeMenuItem, setActiveMenuItem] = useState<string | null>(
+    localStorage.getItem("activeMenuItem") || "/"
+  );
+  const currentTexts = languageEs ? navBarLanguage.es : navBarLanguage.en; 
 
   function handleChangeMenuVisibility() {
     setIsMenuOpen(!isMenuOpen);
   }
 
-  function handleChangeLightStatus() {
-    setIsLight(!isLight);
-    setLightTheme(!lightTheme);
-  }
+  const handleMenuItemClick = (redirection: string) => {
+    setActiveMenuItem(redirection);
+    localStorage.setItem("activeMenuItem", redirection);
+    setIsMenuOpen(false);
+  };
+
+  const handleLanguageToggle = () => {
+    const newLanguageEs = !languageEs;
+    setLanguageEs(newLanguageEs);
+    localStorage.setItem("language", newLanguageEs.toString());
+  };
 
   useEffect(() => {
     if (lightTheme) {
@@ -36,18 +47,29 @@ export function NavBar() {
   return (
     <>
       <nav className="fixed top-0 left-0 w-full dark:bg-[#303030] bg-[#3572EF] sm:hidden flex items-center justify-between p-4 z-50 dark:text-[#3ABEF9] text-white">
-        <div
+         <div
           onClick={() => {
             handleChangeMenuVisibility();
           }}
-          className="cursor-pointer bg-white dark:bg-[#303030] transition-all duration-300 ease-in-out"
+          className="w-1/6 cursor-pointer transition-all duration-300 ease-in-out"
         >
-          {isMenuOpen ? <FcPrevious size={24} /> : <FcMenu size={24} />}
+          <div className="relative w-6 h-6 bg-white dark:bg-[#303030]">
+            <FcMenu
+              size={24}
+              className={`absolute transition-all duration-300 ease-in-out ${isMenuOpen ? "opacity-0 scale-0" : "opacity-100 scale-100"}`}
+            />
+            <FcPrevious
+              size={24}
+              className={`absolute transition-all duration-300 ease-in-out ${isMenuOpen ? "opacity-100 scale-100" : "opacity-0 scale-0"}`}
+            />
+          </div>
         </div>
         <div
-          className="flex w-full justify-center space-x-2 hover:cursor-pointer"
+          className="flex w-4/6 justify-center space-x-2 hover:cursor-pointer"
           onClick={() => {
-            navigate("/"), setIsMenuOpen(false);
+            navigate("/"), 
+            setIsMenuOpen(false);
+            setActiveMenuItem("/");
           }}
         >
           <img
@@ -57,15 +79,18 @@ export function NavBar() {
           />
           <p className="text-2xl"> CUBA </p>
         </div>
-        <div className="flex space-x-2">
-          <p> ES </p>
+        <div className="flex w-1/6">
           <p
+          className="text-center w-1/2"
+          onClick={ () => { handleLanguageToggle ()} }
+          > { languageEs ? "EN" : "ES" } </p>
+          <p
+          className="flex w-1/2 justify-center"
             onClick={() => {
               handleChangeLightStatus();
             }}
           >
-            {" "}
-            {!isLight ? <MdDarkMode size={24} /> : <CiLight size={24} />}
+            {lightTheme ? <MdDarkMode size={24} /> : <CiLight size={24} />}
           </p>
         </div>
       </nav>
@@ -77,7 +102,10 @@ export function NavBar() {
       >
         <ul className="grid grid-cols-1 sm:grid-cols-7 items-center w-full text-center h-1/2 justify-center">
           <div className="hidden sm:flex justify-center cursor-pointer"
-          onClick={ ()=> { navigate("/") } }
+          onClick={ ()=> { 
+            navigate("/");
+            setActiveMenuItem("/");
+           } }
           >
             <img
               className="w-10 h-10"
@@ -86,40 +114,63 @@ export function NavBar() {
             />
           </div>
           <LI
-            title="Ciudades"
+            title={currentTexts.cities}
             redirection="/Ciudades"
-            click={handleChangeMenuVisibility}
+            active={activeMenuItem === "/Ciudades"}
+            click={ ()=> { 
+              handleChangeMenuVisibility();
+              handleMenuItemClick("/Ciudades")
+             } }
           />
           <LI
-            title="Cultura"
+            title={currentTexts.culture}
             redirection="/Cultura"
-            click={handleChangeMenuVisibility}
+            active={activeMenuItem === "/Cultura"}
+            click={ ()=> { 
+              handleChangeMenuVisibility();
+              handleMenuItemClick("/Cultura")
+             } }
           />
           <LI
-            title="Mapa"
+            title={currentTexts.map}
             redirection="/Mapa"
-            click={handleChangeMenuVisibility}
+            active={activeMenuItem === "/Mapa"}
+            click={ ()=> { 
+              handleChangeMenuVisibility();
+              handleMenuItemClick("/Mapa")
+             } }
           />
           <LI
-            title="Curiosidades"
+            title={currentTexts.curiosities}
             redirection="/Curiosidades"
-            click={handleChangeMenuVisibility}
+            active={activeMenuItem === "/Curiosidades"}
+            click={ ()=> { 
+              handleChangeMenuVisibility();
+              handleMenuItemClick("/Curiosidades")
+             } }
           />
           <LI
-            title="Acerca De"
+            title={currentTexts.about}
             redirection="/AcercaDe"
-            click={handleChangeMenuVisibility}
+            active={activeMenuItem === "/AcercaDe"}
+            click={ ()=> { 
+              handleChangeMenuVisibility();
+              handleMenuItemClick("/AcercaDe")
+             } }
           />
 
-          <li className="hidden sm:flex flex-row items-center justify-around col-start-7">
-            <p className="m-1 cursor-pointer">ES </p>
+          <li className="hidden sm:flex flex-row items-center justify-around col-start-7 ">
+          <p
+          className="text-center w-1/2 text-white dark:text-[#3ABEF9]"
+          onClick={ () => { handleLanguageToggle ()} }
+          > { languageEs ? "EN" : "ES" } </p>
             <p
-              className="m-1 cursor-pointer"
+              className="m-1 cursor-pointer text-white dark:text-[#3ABEF9]"
               onClick={() => {
                 handleChangeLightStatus();
               }}
             >
-              {!isLight ? <MdDarkMode size={24} /> : <CiLight size={24} />}
+              {lightTheme ? <MdDarkMode size={24} /> : <CiLight size={24} />}
             </p>
           </li>
         </ul>
