@@ -1,12 +1,18 @@
+import { PageDimensions } from "../../../Common";
 
 
 
 export function CubanMap(){
 
 return(
-    <div className="pt-16 sm:pt-28">
+    <>
+    <PageDimensions>
+    <div>
         <p>Mapa nacional</p>
     </div>
+    </PageDimensions>
+    </>
+    
 )
 
 }

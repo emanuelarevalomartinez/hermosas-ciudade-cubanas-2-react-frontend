@@ -1,11 +1,17 @@
+import { PageDimensions } from "../../Common";
 
 
 export function AboutUs(){
 
 return(
-    <div className="pt-16 sm:pt-28">
+  <>
+  <PageDimensions>
+  <div>
       <p>Acerca de Mi</p>
     </div>
+  </PageDimensions>
+  </>
+   
 )
 
 }

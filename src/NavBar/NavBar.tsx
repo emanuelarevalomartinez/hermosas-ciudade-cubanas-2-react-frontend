@@ -8,9 +8,18 @@ import { Context, LI } from "../Common";
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { navBarLanguage } from "./language";
+import { useSelector } from 'react-redux'
 
 export function NavBar() {
   const navigate = useNavigate();
+
+// const prueba = useSelector( state => state.navBar );
+
+// console.log(prueba !== null && prueba !== undefined);
+
+// console.log(typeof prueba === "boolean");
+
+
 
   const { lightTheme, languageEs, setLanguageEs, handleChangeLightStatus } = useContext(Context);
 

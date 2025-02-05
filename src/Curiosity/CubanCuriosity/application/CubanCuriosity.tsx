@@ -1,11 +1,17 @@
+import { PageDimensions } from "../../../Common";
 
 
 export function CubanCuriosity(){
 
 return(
-    <div className="pt-16 sm:pt-28">
+    <>
+    <PageDimensions>
+    <div>
         <p>Curiosidades Nacionales</p>
     </div>
+    </PageDimensions>
+    </>
+   
 )
 
 }
