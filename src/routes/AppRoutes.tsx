@@ -1,11 +1,11 @@
 
 import { Route, Routes } from "react-router-dom";
 import { Home } from "../Home";
-import { CubanCities } from "../Cuba/Cities";
-import { CubanCulture } from "../Culture";
-import { CubanMap } from "../Maps";
-import { CubanCuriosity } from "../Curiosity";
+import { CubanCulture } from "../Culture/CubanCuriosity";
+import { CubanCuriosity } from "../Curiosity/CubanCuriosity";
 import { AboutUs } from "../AboutUs";
+import { CubanCities } from "../Cities/CubanCities";
+import { CubanMap } from "../Maps/CubanMaps";
 
 
 export function AppRoutes(){

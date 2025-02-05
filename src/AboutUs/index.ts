@@ -1,3 +1,3 @@
 
 
-export * from './AboutUs'
+export * from './application/AboutUs'
