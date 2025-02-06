@@ -7,7 +7,7 @@ interface Props{
 export function PageDimensions({children}:Props){
     return(
         <>
-        <div className="pt-16 sm:pt-28 px-4 sm:px-8">
+        <div className="pt-20 sm:pt-28 px-4 sm:px-8">
           {children}
         </div>
         </>

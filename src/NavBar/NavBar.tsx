@@ -4,29 +4,28 @@ import { FcPrevious } from "react-icons/fc";
 import iconHome from "/cuba/icons/icons8-island-flat-96.png";
 
 import { FcMenu } from "react-icons/fc";
-import { Context, LI } from "../Common";
-import { useContext, useEffect, useState } from "react";
+import { LI } from "../Common";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { navBarLanguage } from "./language";
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+import { AppDispatch, RootState } from "../app/Store/store";
+import { handleChangeLanguage, handleChangeLightStatus } from "../Common/commonSlice/commoSlice";
 
 export function NavBar() {
   const navigate = useNavigate();
-
-// const prueba = useSelector( state => state.navBar );
-
-// console.log(prueba !== null && prueba !== undefined);
-
-// console.log(typeof prueba === "boolean");
-
-
-
-  const { lightTheme, languageEs, setLanguageEs, handleChangeLightStatus } = useContext(Context);
 
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeMenuItem, setActiveMenuItem] = useState<string | null>(
     localStorage.getItem("activeMenuItem") || "/"
   );
+
+  const languageEs = useSelector((state: RootState) => state.common.language);
+  const lightTheme = useSelector((state: RootState) => state.common.lightTheme);
+
+  const commonDispatch = useDispatch<AppDispatch>(); 
+
+
   const currentTexts = languageEs ? navBarLanguage.es : navBarLanguage.en; 
 
   function handleChangeMenuVisibility() {
@@ -41,8 +40,7 @@ export function NavBar() {
 
   const handleLanguageToggle = () => {
     const newLanguageEs = !languageEs;
-    setLanguageEs(newLanguageEs);
-    localStorage.setItem("language", newLanguageEs.toString());
+    commonDispatch( handleChangeLanguage(newLanguageEs) )
   };
 
   useEffect(() => {
@@ -96,7 +94,7 @@ export function NavBar() {
           <p
           className="flex w-1/2 justify-center"
             onClick={() => {
-              handleChangeLightStatus();
+              commonDispatch( handleChangeLightStatus() )
             }}
           >
             {lightTheme ? <MdDarkMode size={24} /> : <CiLight size={24} />}
@@ -176,7 +174,7 @@ export function NavBar() {
             <p
               className="m-1 cursor-pointer text-white dark:text-[#3ABEF9]"
               onClick={() => {
-                handleChangeLightStatus();
+                commonDispatch( handleChangeLightStatus() )
               }}
             >
               {lightTheme ? <MdDarkMode size={24} /> : <CiLight size={24} />}

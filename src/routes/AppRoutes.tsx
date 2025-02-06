@@ -6,6 +6,7 @@ import { AboutUs } from "../AboutUs";
 import { CubanCities } from "../Cities/CubanCities";
 import { CubanMap } from "../Maps/CubanMaps";
 import { CubanCulture } from "../Culture/CubanCulture";
+import { NotFoundPage } from "../Common";
 
 
 export function AppRoutes(){
@@ -18,6 +19,8 @@ return(
           <Route path="/Mapa" element={ <CubanMap/> }/>
           <Route path="/Curiosidades" element={ <CubanCuriosity/> }/>
           <Route path="/AcercaDe" element={ <AboutUs/> }/>
+          <Route path="*" element={ <NotFoundPage/> }/>
+
        </Routes>
 )
 
