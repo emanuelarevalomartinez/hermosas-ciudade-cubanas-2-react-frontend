@@ -1,4 +1,3 @@
 
 
-export * from './NavBar'
-export * from './language'
+export * from './view'

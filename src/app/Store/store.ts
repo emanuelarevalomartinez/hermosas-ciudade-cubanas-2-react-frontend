@@ -1,13 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import navBarSlice from "../../NavBar/infrastructure/navBarFeatures/navBarSlice";
-import cubanCitiesSlice from "../../Cities/CubanCities/infrastructure/cubanCitiesSlice/cubanCitiesSlice";
+import citiesSlice from '../../Cities/model/citiesSlice'
 import commonSlice from "../../Common/commonSlice/commoSlice";
 
 
 const store = configureStore({
    reducer: {
-     navBar: navBarSlice,
-     cities: cubanCitiesSlice,
+     cities: citiesSlice,
      common: commonSlice
    }
 })

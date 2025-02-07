@@ -1,3 +1,3 @@
 
 
-export * from './application/Home'
+export * from './view'
