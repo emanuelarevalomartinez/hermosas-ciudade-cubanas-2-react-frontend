@@ -61,7 +61,7 @@ export function City({city}:Props){
       }`} >
             <div className="flex w-auto md:w-1/2 max-h-96 rounded-xl">
                 <img 
-                className="flex object-contain rounded-xl"
+                className="flex object-cover rounded-xl"
                  src={url}
                 alt="It is not posibble to view the photo" />
             </div>
