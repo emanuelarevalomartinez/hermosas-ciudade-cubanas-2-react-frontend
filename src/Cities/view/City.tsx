@@ -12,7 +12,9 @@ interface Props{
 
 export function City({city}:Props){
     
-    const globalCubaImages = "public/cuba/"
+    const globalCubaImages = "public/cuba/cities"
+    const folder = city.imageUrl.split(".");
+    const url = `${globalCubaImages}/${folder[0]}/${city.imageUrl}`
 
     const languageEs = useSelector((state: RootState) => state.common.language);
     const currentTexts = languageEs ? cityLanguage.es : cityLanguage.en; 
@@ -25,7 +27,7 @@ export function City({city}:Props){
       if (cityRef.current) {
         const { top } = cityRef.current.getBoundingClientRect();
         const windowHeight = window.innerHeight;
-        setIsHoverEnabled(top > windowHeight * 0.2);
+        setIsHoverEnabled(top > windowHeight * 0.3);
       }
     };
 
@@ -60,7 +62,7 @@ export function City({city}:Props){
             <div className="flex w-auto md:w-1/2 max-h-96 rounded-xl">
                 <img 
                 className="flex object-contain rounded-xl"
-                src={`${globalCubaImages}La_Habana/wallhaven-e77zk8_1920x1080.png`} 
+                 src={url}
                 alt="It is not posibble to view the photo" />
             </div>
             <div className="flex flex-col w-auto md:w-1/2 p-2 gap-4 items-center text-center place-content-center">

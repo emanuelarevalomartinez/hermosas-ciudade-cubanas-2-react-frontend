@@ -8,6 +8,8 @@ export interface CityInterface {
     population: number;
     province: string;
     tourismRating: number;
+    reference: string,
+    imageUrl: string,
     temperatureRange: string[];
     foundedYear: number;
     shortDescription: string;
