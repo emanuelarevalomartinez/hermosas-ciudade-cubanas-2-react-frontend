@@ -59,7 +59,7 @@ export function City({city}:Props){
       className={`flex flex-col md:flex-row p-4 mx-10 md:mx-8 mt-8 border border-black text-black dark:border-white dark:text-white rounded-xl transition-transform duration-300 ${
         isHoverEnabled ? "hover:shadow-lg hover:scale-105" : ""
       }`} >
-            <div className="flex w-auto md:w-1/2 max-h-96 rounded-xl">
+            <div className="flex w-auto md:w-1/2 max-h-96 min-h-40 md:min-h-80 rounded-xl">
                 <img 
                 className="flex object-cover rounded-xl"
                  src={url}
