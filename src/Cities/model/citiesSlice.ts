@@ -1,8 +1,9 @@
 
 
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { citiesData } from "../controller/citiesData";
 import { citiesApi } from "../controller/citiesApi";
+import { RootState } from "../../app/Store/store";
 
 export const fetchCities = createAsyncThunk('cities/fetchCities', async () => {
     return citiesApi.getCities();
@@ -12,13 +13,7 @@ export const fetchCities = createAsyncThunk('cities/fetchCities', async () => {
 export const citiesSlice = createSlice({
     name: "cities",
     initialState: citiesData,
-    reducers: {},
-    // reducers: {
-    //      addCubanCity: (state, action) => {
-    //           // state.push(action.payload);
-    //            return [...state, action.payload];
-    //      }
-    // }
+    reducers: { },
     extraReducers: ( builder ) => {
         builder
         .addCase(fetchCities.pending, () => {
@@ -34,5 +29,5 @@ export const citiesSlice = createSlice({
     },
 })
 
-// export const { addCubanCity } = citiesSlice.actions;
+ export const {  } = citiesSlice.actions;
 export default citiesSlice.reducer;

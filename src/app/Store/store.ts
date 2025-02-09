@@ -6,7 +6,7 @@ import commonSlice from "../../Common/commonSlice/commoSlice";
 const store = configureStore({
    reducer: {
      cities: citiesSlice,
-     common: commonSlice
+     common: commonSlice,
    }
 })
 

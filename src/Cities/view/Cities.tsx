@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { PageDimensions } from "../../Common";
-import { City } from "./City";
+import { CityCard } from "./CityCard";
 import { CityInterface } from "../controller/citiesInterface";
 import { RootState } from "../../app/Store/store";
 
@@ -21,11 +21,10 @@ export function Cities(){
             {
                cities.map( (city,index) => {
                 return(
-                   <City key={index} city={city} />
+                   <CityCard key={index} city={city} />
                 ) 
                } )
             }
-            {/* <City city={cities[2]}/> */}
         </PageDimensions>
       </>
     )

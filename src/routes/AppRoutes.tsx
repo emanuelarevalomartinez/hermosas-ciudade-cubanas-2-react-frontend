@@ -8,6 +8,7 @@ import {
    AboutUs,
    CubanCuriosity,
    CubanMap,
+   CityView,
  } from "../index";
 
 
@@ -17,6 +18,7 @@ return(
        <Routes>
           <Route path="/" element={ <Home/> }/>
           <Route path="/Ciudades" element={ <Cities/> }/>
+          <Route path="/Ciudad/:id" element={ <CityView/> }/>
           <Route path="/Cultura" element={ <CubanCulture/> }/>
           <Route path="/Mapa" element={ <CubanMap/> }/>
           <Route path="/Curiosidades" element={ <CubanCuriosity/> }/>

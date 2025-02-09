@@ -4,15 +4,16 @@ import { CityInterface } from "../controller/citiesInterface";
 import { cityLanguage } from "./language/language";
 import { RootState } from "../../app/Store/store";
 import { useEffect, useRef, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 interface Props{
     city: CityInterface;
 }
 
 
-export function City({city}:Props){
+export function CityCard({city}:Props){
     
-    const globalCubaImages = "public/cuba/cities"
+    const globalCubaImages = "cuba/cities"
     const folder = city.imageUrl.split(".");
     const url = `${globalCubaImages}/${folder[0]}/${city.imageUrl}`
 
@@ -20,7 +21,8 @@ export function City({city}:Props){
     const currentTexts = languageEs ? cityLanguage.es : cityLanguage.en; 
 
     const [isHoverEnabled, setIsHoverEnabled] = useState(true);
-  const cityRef = useRef<HTMLDivElement>(null);
+    const cityRef = useRef<HTMLDivElement>(null);
+    const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -58,7 +60,9 @@ export function City({city}:Props){
         ref={cityRef}
       className={`flex flex-col md:flex-row p-4 mx-10 md:mx-8 mt-8 border border-black text-black dark:border-white dark:text-white rounded-xl transition-transform duration-300 ${
         isHoverEnabled ? "hover:shadow-lg hover:scale-105" : ""
-      }`} >
+      }`} 
+      onClick={ ()=> { navigate(`/Ciudad/${city.id}`) } }
+      >
             <div className="flex w-auto md:w-1/2 max-h-96 min-h-40 md:min-h-80 rounded-xl">
                 <img 
                 className="flex object-cover rounded-xl"
