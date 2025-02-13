@@ -39,7 +39,7 @@ export const citiesData: CityInterface[] = [
         temperatureRange: ["26°C", "31°C"],
         foundedYear: 1515,
         shortDescription: "Cuna de la música cubana y ciudad con una rica herencia cultural.",
-        longDescription: "Santiago de Cuba, la segunda ciudad más grande de la isla, es considerada la cuna de la música cubana y la revolución. Fundada en 1515, su vibrante cultura afrocaribeña la distingue de otras ciudades cubanas. Entre sus principales atractivos destacan el Castillo de San Pedro de la Roca, una fortaleza del siglo XVII, la emblemática Plaza de la Revolución y el famoso Carnaval de Santiago. Su mezcla de historia, música y diversidad cultural la convierten en un destino fascinante."
+        longDescription: "La segunda ciudad más grande de la isla, es considerada la cuna de la música cubana y la revolución. Fundada en 1515, su vibrante cultura afrocaribeña la distingue de otras ciudades cubanas. Entre sus principales atractivos destacan el Castillo de San Pedro de la Roca, una fortaleza del siglo XVII, la emblemática Plaza de la Revolución y el famoso Carnaval de Santiago. Su mezcla de historia, música y diversidad cultural la convierten en un destino fascinante."
     },
     {
         name: "Cienfuegos",

@@ -6,7 +6,7 @@ export const cityLanguage = {
         tourismRating:"Calification",
     },
     es: {
-        population:"Cantidad de Habitantes",
+        population:"Habitantes",
         tourismRating:"Calificación",
     },
   };

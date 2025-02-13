@@ -1,9 +1,8 @@
 
 
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { citiesData } from "../controller/citiesData";
 import { citiesApi } from "../controller/citiesApi";
-import { RootState } from "../../app/Store/store";
 
 export const fetchCities = createAsyncThunk('cities/fetchCities', async () => {
     return citiesApi.getCities();
@@ -20,11 +19,11 @@ export const citiesSlice = createSlice({
           //  console.log("Fetching cities data...");
         })
         .addCase(fetchCities.fulfilled, (state, action) => {
-          //  console.log("Data loaded successfully:", action.payload);
+            console.log("Data loaded successfully:", action.payload, state);
             return action.payload;
         })
         .addCase(fetchCities.rejected, (state, action) => {
-          //  console.log("Failed to fetch data:", action.error);
+            console.log("Failed to fetch data:", action.error, state);
         });
     },
 })
